@@ -1,0 +1,121 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@tailwind utilities;
+
+
+/* Optional custom styles */
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --background: #030a1e; /* hampir hitam dengan biru navy */
+  --foreground: #d0d7ff; /* teks biru muda terang */
+  --card: #06122f;       /* card biru sangat gelap */
+  --card-foreground: #b0bcf8;
+  --popover: #0a1c46;    /* popover biru gelap */
+  --popover-foreground: #dbe2ff;
+  --primary: #1c3aac;    /* biru pekat */
+  --primary-foreground: #e1e8ff;
+  --secondary: #152a8f;  /* biru navy gelap */
+  --secondary-foreground: #c9d1ff;
+  --muted: #121f3b;      /* muted biru gelap */
+  --muted-foreground: #8899bb;
+  --accent: #2746d9;     /* accent biru cerah */
+  --accent-foreground: #e1e8ff;
+  --destructive: #b91c1c; /* merah gelap */
+  --border: #162e8b;     /* border biru gelap */
+  --input: #101f3a;      /* input background lebih gelap */
+  --ring: #3b59ff;       /* ring biru terang */
+
+  --sidebar: #040f28;             /* sidebar biru sangat gelap */
+  --sidebar-foreground: #c7d1ff;  /* teks terang */
+  --sidebar-primary: #2543b6;     /* primary blue */
+  --sidebar-primary-foreground: #e0e9ff;
+  --sidebar-accent: #3a5aff;
+  --sidebar-accent-foreground: #e0e9ff;
+  --sidebar-border: #1a357a;
+  --sidebar-ring: #3657ff;
+}
+
+.dark {
+  --background: #030a1e; /* hampir hitam dengan biru navy */
+  --foreground: #d0d7ff; /* teks biru muda terang */
+  --card: #06122f;       /* card biru sangat gelap */
+  --card-foreground: #b0bcf8;
+  --popover: #0a1c46;    /* popover biru gelap */
+  --popover-foreground: #dbe2ff;
+  --primary: #1c3aac;    /* biru pekat */
+  --primary-foreground: #e1e8ff;
+  --secondary: #152a8f;  /* biru navy gelap */
+  --secondary-foreground: #c9d1ff;
+  --muted: #121f3b;      /* muted biru gelap */
+  --muted-foreground: #8899bb;
+  --accent: #2746d9;     /* accent biru cerah */
+  --accent-foreground: #e1e8ff;
+  --destructive: #b91c1c; /* merah gelap */
+  --border: #162e8b;     /* border biru gelap */
+  --input: #101f3a;      /* input background lebih gelap */
+  --ring: #3b59ff;       /* ring biru terang */
+
+  --sidebar: #040f28;             /* sidebar biru sangat gelap */
+  --sidebar-foreground: #c7d1ff;  /* teks terang */
+  --sidebar-primary: #2543b6;     /* primary blue */
+  --sidebar-primary-foreground: #e0e9ff;
+  --sidebar-accent: #3a5aff;
+  --sidebar-accent-foreground: #e0e9ff;
+  --sidebar-border: #1a357a;
+  --sidebar-ring: #3657ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
