@@ -15,10 +15,10 @@ import java.util.UUID;
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
 
-    @Value("${uploadProfile.dir}")
+    @Value("${fileUpload.profileDir}")
     private String uploadProfileDir;
 
-    @Value("${uploadBackground.dir}")
+    @Value("${fileUpload.backgroundDir}")
     private String uploadBackgroundDir;
 
 

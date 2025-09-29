@@ -20,10 +20,10 @@ import java.util.Optional;
 @Service
 public class UserProfileServiceImpl implements UserProfileService {
 
-    @Value("${uploadProfile.dir}")
+    @Value("${fileUpload.profileDir}")
     private String uploadProfileDir;
 
-    @Value("${uploadBackground.dir}")
+    @Value("${fileUpload.backgroundDir}")
     private String uploadBackgroundDir;
 
     private final UserRepository userRepository;

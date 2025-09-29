@@ -1,0 +1,70 @@
+services:
+    # ===================== POSTGRESQL =====================
+    app-chat-postgres:
+        image: postgres:15
+        container_name: app-chat-postgres
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: appchatdb
+        ports:
+          - "5434:5432"
+        volumes:
+          - app-chat-pgdata:/var/lib/postgresql/data
+        networks:
+          - app-chat-network
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U postgres"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
+# ===================== SPRING BOOT (BACKEND) =====================
+    app-chat-backend:
+        build: ./app-chat-be
+        image: app-chat-backend:latest
+        container_name: app-chat-backend
+        ports:
+            - "8080:8080"
+        env_file:
+            - ./app-chat-be/.env
+        depends_on:
+            - app-chat-postgres
+        volumes:
+            - ./uploads:/app/uploads
+        networks:
+            - app-chat-network
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+# ===================== REACT FRONTEND =====================
+    app-chat-frontend:
+        build:
+            context: ./app-chat-fe
+            dockerfile: Dockerfile
+        image: app-chat-frontend:latest
+        container_name: app-chat-frontend
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./app-chat-fe:/app
+            - /app/node_modules
+        command: npm run dev
+        stdin_open: true
+        tty: true
+        depends_on:
+            - app-chat-backend
+        networks:
+            - app-chat-network
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:5173"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+volumes:
+    app-chat-pgdata:
+
+networks:
+    app-chat-network:
+        driver: bridge

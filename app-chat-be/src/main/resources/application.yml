@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: app-chat-be
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+      file-size-threshold: 2MB
+
+blackcode:
+  app:
+    jwtSecret: 5pAq6zRyX8bC3dV2wS7gN1mK9jF0hL4tUoP6iBvE3nG8xZaQrY7cW2fA
+    jwtExpirationMs: 3600000
+    jwtRefreshExpirationMs: 360000000
+
+#logging.level.org.springframework=INFO
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+#Config directory uploads image
+fileUpload:
+  profileDir: ./uploadProfile
+  backgroundDir: ./uploadBackground
+
